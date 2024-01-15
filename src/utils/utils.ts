@@ -21,14 +21,6 @@ export const hexToRGB = (h) => {
   return `${+r},${+g},${+b}`;
 };
 
-export const formatValue = (value) => Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumSignificantDigits: 3,
-  notation: 'compact',
-}).format(value);
-
-
 export const getRefId = (idx: number) => {
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   if (idx >= 0 && idx < 26) {

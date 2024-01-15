@@ -38,7 +38,7 @@ function DashboardCard({title, labels, datas}: Props) {
       <div className="px-5 pt-5">
         <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">{title}</h2>
       </div>
-      <div className="grow max-sm:max-h-[128px] xl:max-h-[128px]">
+      <div className="h-[256px]">
         <LineChart data={chartData} width={389} height={128} />
       </div>
     </div>

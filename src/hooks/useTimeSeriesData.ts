@@ -109,6 +109,10 @@ const useInterval = (callback: () => void, delay: number | null): void => {
   const savedCallback = useRef<() => void>();
 
   useEffect(() => {
+    callback();
+  }, []);
+
+  useEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 

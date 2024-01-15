@@ -7,7 +7,7 @@ import { useMemoryMetric, useCpuMetric, useLog, applyLog, applyMetric } from '..
 function Dashboard() {
 
   const range = 15 * 60 * 1000
-  const interval = 10 * 1000
+  const interval = 10 * 60 * 1000
 
   const projectData = {
     name: "application",

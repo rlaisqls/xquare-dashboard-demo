@@ -50,7 +50,9 @@ export const LineChart = ({
         scales: {
           x: {
             ticks: {
-              callback: (idx) => new Date(+data.labels[idx]).toTimeString().split(' ')[0]
+              callback: (idx) => {
+                return new Date(+data.labels[idx]).toTimeString().split(' ')[0]
+              }
             },
             display: true,
             title: {
@@ -58,9 +60,6 @@ export const LineChart = ({
             }
           },
           y: {
-            ticks: {
-              callback: (val) => (formatBytes(val))
-            },
             display: true
           }
         },
@@ -68,27 +67,36 @@ export const LineChart = ({
           tooltip: {
             callbacks: {
               title: () => false, // Disable tooltip title
-              label: (context) => `${parseFloat(context.parsed.y.toFixed(5))
-                }`,
+              label: (context) => `${parseFloat(context.parsed.y.toFixed(5))}`,
             },
           },
           legend: {
             display: false,
           },
           zoom: {
-              pan: { // 마우스로 잡아서 그래프 이동
-                  enabled: true,
-                  mode: 'x'
+            zoom: {
+              mode: 'x',
+              wheel: {
+                enabled: true,
               },
-              zoom: {
-                  wheel: {
-                      enabled: true
-                  }
-              }
+              drag: {
+                enabled: true
+              },
+              pinch: {
+                enabled: true
+              },
+            }
+          }
+        },
+        transitions: {
+          zoom: {
+            animation: {
+              duration: 1000
+            }
           }
         },
         interaction: {
-          intersect: false,
+          intersect: true,
           mode: 'nearest',
         },
         maintainAspectRatio: false,
